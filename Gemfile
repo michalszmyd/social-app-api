@@ -16,7 +16,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-  gem 'rubocop'
+  gem 'rubocop', '~> 0.48.0'
   gem 'factory_bot'
   gem 'rspec-rails', '~> 3.8'
 end
