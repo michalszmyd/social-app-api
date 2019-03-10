@@ -8,6 +8,6 @@ class JwtService
   end
 
   def self.decode(payload)
-    JWT.decode(payload, SALT, 'HS256')
+    JWT.decode(payload, SALT, 'HS256')[0]
   end
 end

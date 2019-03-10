@@ -283,7 +283,12 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+  require 'jwt_strategy'
 
+  config.warden do |manager|
+    manager.strategies.add(:jwt_strategy, Devise::Strategies::JwtStrategy)
+    manager.default_strategies(scope: :api_v1_user).unshift :jwt_strategy
+  end
   # ==> Turbolinks configuration
   # If your app is using Turbolinks, Turbolinks::Controller needs to be included to make redirection work correctly:
   #

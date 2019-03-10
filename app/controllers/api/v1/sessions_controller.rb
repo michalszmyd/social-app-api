@@ -9,7 +9,7 @@ module Api
         user = User.find_by(email: session_params[:email])
 
         if user && user.valid_password?(session_params[:password])
-          render json: { user: UserSessionSerializer.new(user).as_json, status: :ok }
+          render json: UserSessionSerializer.new(user).as_json, status: :ok
         else
           render json: { errors: { email_or_password: 'invalid' } }, status: :unprocessable_entity
         end

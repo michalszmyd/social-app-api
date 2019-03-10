@@ -5,7 +5,7 @@ class PostSerializer
   set_type :post
   set_id :id
 
-  attributes :title, :description
+  attributes :title, :description, :user
 
   belongs_to :user
 end
