@@ -10,8 +10,11 @@ module SocialApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
+    config.cache_classes = false
     config.eager_load = true
-
+    config.active_storage.service = :local
+    routes.default_url_options[:host] = 'localhost:3000'
+    # config.default_url_options[:host] = 'localhost:3000'
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

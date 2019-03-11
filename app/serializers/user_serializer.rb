@@ -6,5 +6,5 @@ class UserSerializer
   set_id :id
   has_many :posts
 
-  attributes :id, :email, :posts
+  attributes :id, :email
 end
