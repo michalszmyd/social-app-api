@@ -287,7 +287,7 @@ Devise.setup do |config|
 
   config.warden do |manager|
     manager.strategies.add(:jwt_strategy, Devise::Strategies::JwtStrategy)
-    manager.default_strategies(scope: :api_v1_user).unshift :jwt_strategy
+    manager.default_strategies(scope: :user).unshift :jwt_strategy
   end
   # ==> Turbolinks configuration
   # If your app is using Turbolinks, Turbolinks::Controller needs to be included to make redirection work correctly:

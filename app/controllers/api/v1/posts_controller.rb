@@ -6,8 +6,18 @@ module Api
       def index
         posts = params[:user_id] ? with_user : without_user
 
-        render json: PostSerializer.new(posts).as_json
+        render json: PostSerializer.new(
+          posts.includes(:user, :recent_comments).with_attached_image
+        ).as_json
       end
+
+      def show
+        post = Post.find(params[:id])
+
+        render json: PostSerializer.new(post).as_json
+      end
+
+      private
 
       def with_user
         Post.where(user_id: params[:user_id])

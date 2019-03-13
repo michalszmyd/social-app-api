@@ -5,7 +5,7 @@ module Api
     class BaseController < ApplicationController
       respond_to :json
 
-      before_action :authenticate_api_v1_user!
+      before_action :authenticate_user!
     end
   end
 end
