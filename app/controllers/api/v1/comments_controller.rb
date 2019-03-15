@@ -3,8 +3,6 @@
 module Api
   module V1
     class CommentsController < BaseController
-      skip_before_action :verify_authenticity_token
-
       def index
         post = Post.find(params[:post_id])
 

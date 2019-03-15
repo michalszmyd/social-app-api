@@ -17,7 +17,21 @@ module Api
         render json: PostSerializer.new(post).as_json
       end
 
+      def create
+        post = Post.new(post_params.merge(user_id: current_user.id))
+
+        if post.save
+          render json: {}, stauts: :ok
+        else
+          render json: { errors: post.errors.messages }
+        end
+      end
+
       private
+
+      def post_params
+        params.require(:post).permit(:title, :description, :image)
+      end
 
       def with_user
         Post.where(user_id: params[:user_id])

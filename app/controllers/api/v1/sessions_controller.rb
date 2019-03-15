@@ -3,8 +3,6 @@
 module Api
   module V1
     class SessionsController < Devise::SessionsController
-      skip_before_action :verify_authenticity_token
-
       def create
         user = User.find_by(email: session_params[:email])
 

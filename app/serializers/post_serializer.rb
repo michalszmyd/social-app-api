@@ -6,7 +6,11 @@ class PostSerializer
   set_type :post
   set_id :id
 
-  attributes :title, :description, :user
+  attributes :title, :description
+
+  attribute :user do |object|
+    UserSerializer.new(object.user).as_json
+  end
 
   attribute :comments do |object|
     CommentSerializer.new(object.recent_comments).as_json
