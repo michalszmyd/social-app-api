@@ -5,7 +5,5 @@ class Post < ApplicationRecord
            foreign_key: 'post_id',
            class_name: 'Comment', inverse_of: :post
 
-  has_one_attached :image
-
   validates :user_id, :title, :description, presence: true
 end

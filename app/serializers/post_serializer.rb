@@ -6,7 +6,7 @@ class PostSerializer
   set_type :post
   set_id :id
 
-  attributes :title, :description
+  attributes :title, :description, :image_url
 
   attribute :user do |object|
     UserSerializer.new(object.user).as_json
@@ -14,14 +14,6 @@ class PostSerializer
 
   attribute :comments do |object|
     CommentSerializer.new(object.recent_comments).as_json
-  end
-
-  attribute :image_url do |object|
-    if object.image.attached?
-      Rails.application.routes.url_helpers.url_for(object.image)
-    else
-      ''
-    end
   end
 
   belongs_to :user

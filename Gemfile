@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails_12factor', group: :production
-gem 'rails', '~> 5.2'
+gem 'rails', '~> 5.1'
 gem 'pg'
 gem 'puma', '~> 3.7'
 gem 'uglifier', '>= 1.3.0'

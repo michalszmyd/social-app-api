@@ -5,13 +5,5 @@ class UserSerializer
   set_type :user
   set_id :id
 
-  attributes :id, :email, :first_name, :last_name
-
-  attribute :profile_image_url do |object|
-    if object.profile_image.attached?
-      Rails.application.routes.url_helpers.url_for(object.profile_image)
-    else
-      ''
-    end
-  end
+  attributes :id, :email, :first_name, :last_name, :profile_image_url
 end

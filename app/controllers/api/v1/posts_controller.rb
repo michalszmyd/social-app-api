@@ -7,7 +7,7 @@ module Api
         posts = params[:user_id] ? with_user : without_user
 
         render json: PostSerializer.new(
-          posts.includes(:user, :recent_comments).with_attached_image
+          posts.includes(:user, :recent_comments)
         ).as_json
       end
 
@@ -18,12 +18,14 @@ module Api
       end
 
       def create
-        post = Post.new(post_params.merge(user_id: current_user.id))
+        form = PostForm.new(post_params.merge(user_id: current_user.id))
+        form.save
+        post = form.post
 
-        if post.save
-          render json: {}, stauts: :ok
+        if post
+          render json: { id: post.id }, stauts: :ok
         else
-          render json: { errors: post.errors.messages }
+          render json: { error: post.errors.full_messages.join(', ') }, status: :unprocessable_entity
         end
       end
 
